@@ -25,17 +25,30 @@ const getWeatherData = async () =>{
     const temperature = Math.round(weatherData.data.main.temp-273.15);
     const humidity = weatherData.data.main.humidity;
     const weatherDescription = weatherData.data.weather[0].description;
+    const weatherMain = weatherData.data.weather[0].main;
 
-    // console.log(weatherData);
-    // console.log(windSpeed);
-    // console.log(temperature);
-    // console.log(weatherDescription);
 
     document.getElementById("result").innerHTML = weatherCityName;
     document.getElementById("windSpeed").innerHTML = `Wind Speed: ${windSpeed} km/h`;
     document.getElementById("temp").innerHTML = `Temperature: ${temperature} °C`;
     document.getElementById("humid").innerHTML = `Humidity: ${humidity}%`;
     document.getElementById("descript").innerHTML = `Description: ${weatherDescription}`;
+
+if (weatherMain == "Clouds") {
+    document.getElementById("weatherIcon").src = "images/Cloud.png";
+} else if (weatherMain == "Clear") {
+    document.getElementById("weatherIcon").src = "images/Clear.png";
+} else if (weatherMain == "Snow") {
+    document.getElementById("weatherIcon").src = "images/Snow.png";
+} else if (weatherMain == "Rain") {
+    document.getElementById("weatherIcon").src = "images/Rain.png";
+} else if (weatherMain == "Drizzle") {
+    document.getElementById("weatherIcon").src = "images/Drizzle.png";
+} else if (weatherMain == "Thunderstorm") {
+    document.getElementById("weatherIcon").src = "images/ThunderStorm.png";
+} else  {
+    document.getElementById("weatherIcon").src = "images/OtherWeather.png";
+} 
 
     }
 
